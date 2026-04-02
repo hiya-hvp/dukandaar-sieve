@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>दुकानdaar — SIEVE Engine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="header">
+        <div class="title-wrap">
+            <span class="title-dukan">दुकान</span><span class="title-daar">daar</span>
+        </div>
+        <p class="subtitle">Autonomous Financial Guardian for India's SMB Merchants</p>
+        <span class="badge">SIEVE ENGINE — DARK PATTERN DETECTOR</span>
+    </div>
+
+    <div class="card">
+        <h2>Analyze a Payment or Subscription</h2>
+        <textarea
+            id="inputText"
+            placeholder="Paste subscription terms, a payment description, or just describe your situation...
+
+Example: 'Ek company ne call kiya aur bola free trial hai, but baad mein ₹2,999 katega automatically. Kya yeh sahi hai?'"
+        ></textarea>
+
+        <div class="examples">
+            <span class="examples-label">Try an example:</span>
+            <button class="example-btn" onclick="loadExample(0)">Hidden Activation Fee</button>
+            <button class="example-btn" onclick="loadExample(1)">Subscription Trap</button>
+            <button class="example-btn" onclick="loadExample(2)">Legitimate Payment</button>
+            <button class="example-btn" onclick="loadExample(3)">Hindi Example</button>
+        </div>
+
+        <button class="analyze-btn" onclick="analyze()" id="analyzeBtn">
+            Analyze
+        </button>
+    </div>
+
+    <div class="loading" id="loading">
+        Analyzing...
+    </div>
+
+    <div class="result-card" id="resultCard">
+
+        <div class="verdict-banner" id="verdictBanner">
+            <div class="verdict-icon" id="verdictIcon"></div>
+            <div class="verdict-text">
+                <h3 id="verdictText"></h3>
+                <p id="patternType"></p>
+            </div>
+        </div>
+
+        <div class="friendly-msg" id="friendlyMsg"></div>
+
+        <div id="missBlock" class="miss-block" style="display:none">
+            <div class="block-label">What you might have missed</div>
+            <div class="block-text" id="missText"></div>
+        </div>
+
+        <div id="whyBlock" class="explanation-box" style="display:none">
+            <div class="block-label">How this could hurt you</div>
+            <div class="block-text" id="whyText"></div>
+        </div>
+
+        <div class="recommendation-box">
+            <div class="rec-icon">What to do</div>
+            <p id="recommendation"></p>
+        </div>
+
+        <div id="metricsRow" class="detail-grid">
+            <div class="detail-box">
+                <div class="label">Risk Level</div>
+                <div class="value" id="riskLevel"></div>
+            </div>
+            <div class="detail-box">
+                <div class="label">Pattern</div>
+                <div class="value" id="patternVal" style="font-size:0.82rem;"></div>
+            </div>
+            <div class="detail-box">
+                <div class="label">Confidence</div>
+                <div class="value" id="confidenceVal"></div>
+                <div class="confidence-bar">
+                    <div class="confidence-fill" id="confidenceFill" style="width:0%"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        दुकानdaar by KlausKin
+    </div>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
